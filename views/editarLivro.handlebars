@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css" />
+
+  <title>Edição de {{ livro.titulo }} - Biblioteca Sr. Alex Ferguson</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #afafaf;
+      height: 100%;
+    }
+
+    .navbar {
+      overflow: hidden;
+    }
+
+    .navbar a {
+      color: black;
+      text-align: center;
+      padding: 2rem;
+      text-decoration: none;
+    }
+
+    .box {
+      margin-top: 3%;
+      max-width: 100%;
+      border: 1px solid black;
+      border-radius: 15px;
+      background-color: #dddddd;
+    }
+
+    .form {
+      padding: 5%;
+    }
+
+    .form-group {
+      height: 5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar d-flex justify-content-between align-items-center">
+    <div class="navbar-left">
+      <a href="/adicionarLivro">Cadastro de Livros</a>
+      <a href="/painel">Painel do Administrador</a>
+    </div>
+    <div class="navbar-right">
+      <a href="/"> <b>Sair</b> </a>
+    </div>
+  </div>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="col-md-6 column">
+      <div class="col-md-12 box">
+        <form action="/editarLivro" method="POST" class="form">
+          <h3 class="text-center">Editar {{ livro.titulo }}</h3>
+
+          <div class="form-group">
+            <label for="titulo" class="form-label">Título:</label>
+            <input class="form-control" name="livroId" value="{{livro.id}}" type="hidden">
+            <input class="form-control" name="titulo" type="text" value="{{livro.titulo}}" required><br>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="autores">Autores:</label>
+            <input class="form-control" name="autores" type="text" value="{{livro.autores}}" required><br>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="ano">Ano:</label>
+            <input class="form-control" name="ano" type="text" value="{{livro.ano}}" required><br>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="editora">Editora:</label>
+            <input class="form-control" name="editora" type="text" value="{{livro.editora}}" required><br>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="disponivel">Quantidade Disponível:</label>
+            <input class="form-control" name="disponivel" type="text" value="{{livro.disponivel}}" required><br>
+          </div>
+
+          <div class="form-group">
+            <input class="btn btn-primary" type="submit" value="Editar Livro">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+
+</html>

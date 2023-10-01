@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css" />
+
+  <title>Cadastro de livro - Biblioteca Sr. Alex Ferguson</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #afafaf;
+      height: 100%;
+    }
+
+    .navbar {
+      overflow: hidden;
+    }
+
+    .navbar a {
+      color: black;
+      text-align: center;
+      padding: 2rem;
+      text-decoration: none;
+    }
+
+    .box {
+      margin-top: 5%;
+      max-width: 100%;
+      border: 1px solid black;
+      border-radius: 15px;
+      background-color: #dddddd;
+    }
+
+    .form {
+      padding: 5%;
+    }
+
+    .form-group {
+      height: 5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar d-flex justify-content-between align-items-center">
+    <div class="navbar-left">
+      <a href="/adicionarLivro">Cadastro de Livros</a>
+      <a href="/painel">Painel do Administrador</a>
+    </div>
+    <div class="navbar-right">
+      <a href="/"> <b>Sair</b> </a>
+    </div>
+  </div>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="col-md-6 column">
+      <div class="col-md-12 box">
+        <form action="/adicionarLivro" method="POST" class="form">
+          <h3 class="text-center">Cadastrar Livro</h3>
+
+          <div class="form-group">
+            <label for="titulo" class="form-label">Título:</label>
+            <input type="text" id="titulo" name="titulo" class="form-control" required><br><br>
+          </div>
+
+          <div class="form-group">
+            <label for="autores" class="form-label">Autores:</label>
+            <input type="text" id="autores" name="autores" class="form-control" required><br><br>
+          </div>
+
+          <div class="form-group">
+            <label for="ano" class="form-label">Ano:</label>
+            <input type="number" id="ano" name="ano" class="form-control" required><br><br>
+          </div>
+
+          <div class="form-group">
+            <label for="editora" class="form-label">Editora:</label>
+            <input type="text" id="editora" name="editora" class="form-control" required><br><br>
+          </div>
+
+          <div class="form-group">
+            <label for="disponivel" class="form-label">Quantidade Disponível:</label>
+            <input type="number" id="disponivel" name="disponivel" class="form-control" required><br><br>
+          </div>
+
+          <div class="form-group" style="height: 2rem;">
+            <input type="submit" value="Cadastrar Livro" class="btn btn-primary">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+
+</html>

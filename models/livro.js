@@ -1,7 +1,5 @@
-const { sequelize } = require("../config/database");
-
 module.exports = (sequelize, DataTypes) => {
-  let livros = sequelize.define('livros',
+  let livro = sequelize.define('livro',
     {
       id: {
         type: DataTypes.INTEGER.UNSIGNED,
@@ -27,7 +25,10 @@ module.exports = (sequelize, DataTypes) => {
     { timestamps: false }
   )
 
-  livros.sync( { force: true } )
+  livro.associate = (models) => {
+    livro.hasMany(models.usuarioLivro, { foreignKey: "livroId" });
+  };
+  // livro.sync({ force: true })
 
-  return livros
+  return livro;
 }

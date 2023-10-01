@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    id="bootstrap-css" />
+
+  <title>Buscar livros - Biblioteca Sr. Alex Ferguson</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #afafaf;
+    }
+
+    .navbar {
+      overflow: hidden;
+    }
+
+    .navbar a {
+      color: black;
+      text-align: center;
+      padding: 2rem;
+      text-decoration: none;
+    }
+
+    .container {
+      margin-top: 2%;
+      padding: 20px;
+      width: 60%;
+      border: 1px solid black;
+      border-radius: 15px;
+      background-color: #dddddd;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar d-flex justify-content-between align-items-center">
+    <div class="navbar-left">
+      <a href="/login">Página Inicial</a>
+      <a href="/busca">Procurar livros</a>
+    </div>
+    <div class="navbar-right">
+      <a href="/"> <b>Sair</b> </a>
+    </div>
+  </div>
+
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <div class="col-md-6 column">
+      <div class="col-md-12 box">
+        <form action="/buscar" method="POST" class="form">
+          <h3 class="text-center">Busca de livros</h3>
+          <div class="form-group">
+            <input type="text" class="form-control" name="titulo" placeholder="Digite parte do título" />
+          </div>
+          <div class="form-group mt-1">
+            <button type="submit" class="btn btn-primary">Buscar</button>
+          </div>
+        </form>
+        <form action="/ordem" method="POST">
+          <button type="submit" class="btn btn-primary mt-1">Ordenar por Ano</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {{#if buscaLivros}}
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h3>Resultado da busca</h3>
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">Autores</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Aluguel</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each buscaLivros}}
+        <tr>
+          <th scope="col">{{this.titulo}}</th>
+          <td>{{this.autores}}</td>
+          <td>{{this.ano}}</td>
+          <td>{{this.disponivel}}</td>
+          <td>
+            {{#if this.disponivel}}
+            <form action="/alugarLivro/{{this.id}}" method="POST">
+              <button class="btn btn-primary" type="submit">Alugar</button>
+            </form>
+            {{else}}
+            <span class="text-danger">Não Disponível</span>
+            {{/if}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
+
+  {{#if ordemAno}}
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <h3>Livros ordenados por Ano</h3>
+    <table class="table table-light table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Título</th>
+          <th scope="col">Autores</th>
+          <th scope="col">Ano</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Aluguel</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each ordemAno}}
+        <tr>
+          <th scope="col">{{this.titulo}}</th>
+          <td>{{this.autores}}</td>
+          <td>{{this.ano}}</td>
+          <td>{{this.disponivel}}</td>
+          <td>
+            {{#if this.disponivel}}
+            <form action="/alugarLivro/{{this.id}}" method="POST">
+              <button class="btn btn-primary" type="submit">Alugar</button>
+            </form>
+            {{else}}
+            <span class="text-danger">Não Disponível</span>
+            {{/if}}
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  {{/if}}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+
+</html>
